@@ -1,13 +1,11 @@
 const mongoose = require("mongoose");
-
+const jwt = require("jsonwebtoken");
+const JWT_SECRET_KEY = process.env.JWT_SECRET_KEY;
 const Schema = mongoose.Schema;
 
-const userSchema = Schema({
+const storeSchema = Schema({
   name: String,
-  image: {
-    size: { type: String, lowercase: true },
-    value: { type: String, lowercase: true },
-  },
+  password: { type: String, select: false },
   address: {
     number: { type: String, required: true, lowercase: true, trim: true },
     streetName: { type: String, required: true, lowercase: true, trim: true },
@@ -16,14 +14,14 @@ const userSchema = Schema({
     district: { type: String, required: true, lowercase: true, trim: true },
   },
   phone: { type: String, required: true, unique: true },
-  status: [
-    {
-      type: String,
-      enum: ["unemployed", "children", "old", "covid", "accident"],
-      unique: true,
-    },
-  ],
 });
 
-const User = mongoose.model("User", userSchema);
-module.exports = User;
+storeSchema.methods.generateToken = async function () {
+  const accessToken = await jwt.sign({ _id: this._id }, JWT_SECRET_KEY, {
+    expiresIn: "1d",
+  });
+  return accessToken;
+};
+
+const Store = mongoose.model("Store", storeSchema);
+module.exports = Store;
