@@ -1,22 +1,21 @@
 const utilsHelper = require("../helpers/util.helper");
-const Users = require("../models/User");
+const User = require("../models/User");
 
 const userController = {};
 
 userController.createUser = async (req, res, next) => {
   try {
     let { name, image, address, phone, status } = req.body;
-    let user = await Users.findOne({ phone });
+    let user = await User.findOne({ phone });
     if (user) return next(new Error("401 - User already exits"));
 
-    user = await Users.create({
+    user = await User.create({
       name,
-      image,
       address,
       phone,
       status,
     });
-    utilsHelper.sendResponse(
+    return utilsHelper.sendResponse(
       res,
       200,
       true,
@@ -33,5 +32,5 @@ module.exports = userController;
 
 // userController.geteUser = async (params) => {
 //   let { params } = params;
-//   let user = await Users.find();
+//   let user = await User.find();
 // };
