@@ -15,9 +15,8 @@ const requestSchema = Schema(
     target: { type: Schema.ObjectId, required: true, ref: "Store" },
     isDone: { type: Boolean, default: false },
     type: { type: String, enum: ["request", "donate"] },
-    
   },
-  { timeStamp: true },
+  { timeStamp: true }
 );
 
 const Request = mongoose.model("Request", requestSchema);
