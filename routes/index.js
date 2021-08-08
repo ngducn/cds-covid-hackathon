@@ -6,13 +6,19 @@ router.get("/", function (req, res, next) {
   res.render("index", { title: "Express" });
 });
 
-/**Store route*/
+/* Request routes */
+const requestRoute = require("./request.api");
+router.use("/request", requestRoute);
+
+/* Store route */
 const storeApi = require("./store.api");
 router.use("/store", storeApi);
-// doante route
+
+/* Donate route */
 const donateApi = require("./donate.api");
-router.use("/donate", donateApi); //localhost:5000/charity/donate
-// User route
+router.use("/donate", donateApi);
+
+/* User route */
 const userApi = require("./users.api");
 router.use("/users", userApi);
 
