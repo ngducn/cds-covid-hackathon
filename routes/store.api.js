@@ -12,4 +12,12 @@ const router = express.Router();
 // router.post("/", isAdmin, createStore); <<< final stage
 router.post("/", createStore);
 
+/**
+ * @method : GET
+ * @route : http://localhost:5000/store
+ * @access : Public
+ * @description : Get all store list
+ */
+router.get("/");
+
 module.exports = router;

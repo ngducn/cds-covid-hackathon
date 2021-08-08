@@ -4,32 +4,26 @@ const {
   sendResponse,
 } = require("../helpers/util.helper");
 const Store = require("../models/Store");
-const bcrypt = require("bcrypt");
 const storeController = {};
 
-storeController.createStore = catchAsync(async (req, res) => {
-  let { name, password, address, phone } = req.body;
+storeController.createStore = catchAsync(async (req, res, next) => {
+  let { name, address, phone } = req.body;
   // const admin = req.adminId; final stage
   const admin = "ObjectId";
 
   //bug not an array
-  let fullAddress = Object.values.reduce((a, b) => a + b);
 
-  let store = await Store.findOne({ fullAddress });
+  let store = await Store.findOne({ admin });
   if (store)
     return next(
       new AppError(300, "Store exist with same location", "Create Store Error")
     );
-  const salt = await bcrypt.genSalt(10);
-  password = await bcrypt.hash(password, salt);
 
   store = await Store.create({
     name,
-    password,
     address,
     phone,
     admin,
-    fullAddress,
   });
 
   const accessToken = store.generateToken();
@@ -42,4 +36,37 @@ storeController.createStore = catchAsync(async (req, res) => {
     "create store success"
   );
 });
+
+storeController.getAll = catchAsync(async (req, res, next) => {
+  let { page, limit, sortBy, ...filter } = { ...req.query };
+  page = parseInt(page) || 1;
+  limit = parseInt(limit) || 10;
+
+  const allStore = await Store.countDocuments({
+    ...filter,
+    isDeleted: false,
+  });
+  const totalPages = Math.ceil(allStore / limit);
+  const offset = limit * (page - 1);
+
+  const store = await Store.find(filter)
+    .sort({ ...sortBy, createdAt: -1 })
+    .skip(offset)
+    .limit(limit)
+    .populate("admin");
+
+  return sendResponse(
+    res,
+    200,
+    true,
+    { store, totalPages },
+    null,
+    "Get all store success"
+  );
+});
+
+storeController.getSingleStore = catchAsync(async (req, res, next) => {
+  let store = await Store.findById(req.params.id);
+});
+
 module.exports = storeController;
