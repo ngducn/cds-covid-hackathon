@@ -1,5 +1,5 @@
 const express = require("express");
-const donateController = require("../controllers/donate.controller")
+const donateController = require("../controllers/donate.controller");
 const router = express.Router();
 
 /**
@@ -14,26 +14,19 @@ router.get("/", donateController.getAllDonate);
  * @description Get a single donate
  * @access Public
  */
- router.get("/donateId", donateController.getSingleDonate);
-
+router.get("/donateId", donateController.getSingleDonate);
 
 /**
  * @route POST localhost:5000/charity/donate
  * @description Create a new donate
  * @access Pulbic
  */
- router.post("/", donateController.createDonate);
-
-
-
-
+router.post("/", donateController.createDonate);
 
 /**
  * @route PUT api/donates/:id
  * @description Update a donate information
  * @access Admin required
  */
-
-
 
 module.exports = router;

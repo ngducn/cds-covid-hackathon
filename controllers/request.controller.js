@@ -4,11 +4,10 @@ const Request = require("../models/Request");
 const User = require("../models/User");
 const requestController = {};
 
-
 requestController.getRequests = catchAsync(async (req, res, next) => {
   const { page, limit, ...filter } = req.query;
   const request_limit = limit ? limit : 10;
-  const request_page = page ? request_limit*page : 0;
+  const request_page = page ? request_limit * page : 0;
 
   let requests = await Request.find(filter)
     .populate("author")
@@ -24,7 +23,6 @@ requestController.getRequests = catchAsync(async (req, res, next) => {
     "GET requests success."
   );
 });
-
 
 requestController.createNewRequest = catchAsync(async (req, res, next) => {
   const request = await Request.create(...req.body);

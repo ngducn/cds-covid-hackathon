@@ -7,19 +7,13 @@ const Store = require("../models/Store");
 const storeController = {};
 
 storeController.createStore = catchAsync(async (req, res, next) => {
-  let { name, address, phone } = req.body;
+  //assume only admin could create store
+  //assume admin create store that is not duplicate
   // const admin = req.adminId; final stage
+  let { name, address, phone } = req.body;
   const admin = "ObjectId";
 
-  //bug not an array
-
-  let store = await Store.findOne({ admin });
-  if (store)
-    return next(
-      new AppError(300, "Store exist with same location", "Create Store Error")
-    );
-
-  store = await Store.create({
+  const store = await Store.create({
     name,
     address,
     phone,
