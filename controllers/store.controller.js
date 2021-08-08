@@ -29,6 +29,7 @@ storeController.createStore = catchAsync(async (req, res) => {
     address,
     phone,
     admin,
+    fullAddress,
   });
 
   const accessToken = store.generateToken();
