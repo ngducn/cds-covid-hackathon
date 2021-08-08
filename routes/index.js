@@ -9,4 +9,8 @@ router.get("/", function (req, res, next) {
 /**Store route*/
 const storeApi = require("./store.api");
 router.use("/store", storeApi);
+// User route
+const userApi = require("./users.api");
+router.use("/users", userApi);
+
 module.exports = router;
