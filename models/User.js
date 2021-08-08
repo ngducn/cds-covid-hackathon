@@ -23,6 +23,7 @@ const userSchema = Schema({
       unique: true,
     },
   ],
+  role: { type: String, enum: ["public", "admin"], default: "public" },
 });
 
 const User = mongoose.model("User", userSchema);

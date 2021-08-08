@@ -13,7 +13,9 @@ const storeSchema = Schema({
     city: { type: String, required: true, lowercase: true, trim: true },
     district: { type: String, required: true, lowercase: true, trim: true },
   },
+  fullAddress: String,
   phone: { type: String, required: true, unique: true },
+  admin: { type: Schema.ObjectId, required: true, ref: "User" },
 });
 
 storeSchema.methods.generateToken = async function () {
