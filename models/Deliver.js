@@ -68,6 +68,7 @@ deliverSchema.statics.calculateDonation = async function (to) {
       },
     },
   ]);
+
   await Request.findByIdAndUpdate(to, {
     itemReceive: {
       rice: (adjustment[0] && adjustment[0].rice) || 0,
@@ -85,7 +86,7 @@ deliverSchema.statics.calculateDonation = async function (to) {
 
 deliverSchema.post("save", async function () {
   // this point to current review
-  await this.constructor.calculateDonation(this.to, this.targetType);
+  await this.constructor.calculateDonation(this.to);
 });
 
 deliverSchema.pre(/^findOneAnd/, async function (next) {
@@ -94,10 +95,7 @@ deliverSchema.pre(/^findOneAnd/, async function (next) {
 });
 
 deliverSchema.post(/^findOneAnd/, async function (next) {
-  await this.doc.constructor.calculateDonation(
-    this.doc.to,
-    this.doc.targetType
-  );
+  await this.doc.constructor.calculateDonation(this.doc.to);
 });
 
 const Deliver = mongoose.model("Deliver", deliverSchema);
