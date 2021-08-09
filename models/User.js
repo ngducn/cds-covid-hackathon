@@ -5,9 +5,10 @@ const Schema = mongoose.Schema;
 const userSchema = Schema({
   name: String,
   image: {
-    size: { type: String, lowercase: true },
-    value: { type: String, lowercase: true },
+    size: { type: String },
+    value: { type: String },
   },
+  password: String,
   address: {
     number: { type: String, required: true },
     streetName: { type: String, required: true },

@@ -21,7 +21,7 @@ const requestSchema = Schema({
           "shelter",
         ],
       },
-      value: { type: Number, required: true },
+      value: { type: Number },
     },
   ],
   requestReceive: [
@@ -41,7 +41,7 @@ const requestSchema = Schema({
           "shelter",
         ],
       },
-      value: { type: Number, required: true },
+      value: { type: Number },
     },
   ],
   description: { type: String, required: true },

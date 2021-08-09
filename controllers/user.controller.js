@@ -29,8 +29,3 @@ userController.createUser = async (req, res, next) => {
 };
 
 module.exports = userController;
-
-// userController.geteUser = async (params) => {
-//   let { params } = params;
-//   let user = await User.find();
-// };

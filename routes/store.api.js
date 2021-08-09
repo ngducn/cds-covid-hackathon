@@ -1,5 +1,9 @@
 const express = require("express");
-const { createStore } = require("../controllers/store.controller");
+const {
+  createStore,
+  getAll,
+  getSingleStore,
+} = require("../controllers/store.controller");
 const { isAdmin } = require("../middlewares/auth.middleware");
 const router = express.Router();
 
@@ -10,7 +14,7 @@ const router = express.Router();
  * @description : Create a store
  */
 // router.post("/", isAdmin, createStore); <<< final stage
-router.post("/", createStore);
+router.post("/create", createStore);
 
 /**
  * @method : GET
@@ -18,6 +22,14 @@ router.post("/", createStore);
  * @access : Public
  * @description : Get all store list
  */
-router.get("/");
+router.get("/", getAll);
+
+/**
+ * @method : GET
+ * @route : http://localhost:5000/store
+ * @access : Public
+ * @description : Get store detail
+ */
+router.get("/:id", getSingleStore);
 
 module.exports = router;

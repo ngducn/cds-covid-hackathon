@@ -11,8 +11,8 @@ router.get("/", function (req, res, next) {
 // router.use("/transaction", transactionRoute);
 
 /* Store route */
-// const storeApi = require("./store.api");
-// router.use("/store", storeApi);
+const storeApi = require("./store.api");
+router.use("/store", storeApi);
 
 /* Donate route */
 // const donateApi = require("./donate.api");

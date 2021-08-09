@@ -70,15 +70,15 @@ deliverSchema.statics.calculateDonation = async function (targetId) {
   ]);
   await Request.findByIdAndUpdate(targetId, {
     itemReceive: {
-      rice: (adjustment[0] && -adjustment[0].rice) || 0,
-      ramen: (adjustment[0] && -adjustment[0].ramen) || 0,
-      water: (adjustment[0] && -adjustment[0].water) || 0,
-      shelter: (adjustment[0] && -adjustment[0].shelter) || 0,
-      egg: (adjustment[0] && -adjustment[0].egg) || 0,
-      soap: (adjustment[0] && -adjustment[0].soap) || 0,
-      milk: (adjustment[0] && -adjustment[0].milk) || 0,
-      vegetable: (adjustment[0] && -adjustment[0].vegetable) || 0,
-      mask: (adjustment[0] && -adjustment[0].mask) || 0,
+      rice: (adjustment[0] && adjustment[0].rice) || 0,
+      ramen: (adjustment[0] && adjustment[0].ramen) || 0,
+      water: (adjustment[0] && adjustment[0].water) || 0,
+      shelter: (adjustment[0] && adjustment[0].shelter) || 0,
+      egg: (adjustment[0] && adjustment[0].egg) || 0,
+      soap: (adjustment[0] && adjustment[0].soap) || 0,
+      milk: (adjustment[0] && adjustment[0].milk) || 0,
+      vegetable: (adjustment[0] && adjustment[0].vegetable) || 0,
+      mask: (adjustment[0] && adjustment[0].mask) || 0,
     },
   });
 };
