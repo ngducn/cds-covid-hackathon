@@ -77,19 +77,6 @@ deliverSchema.statics.calculateDeliver = async function (to) {
     },
   ]);
 
-<<<<<<< HEAD
-  await Request.findByIdAndUpdate(to, {
-    itemReceive: {
-      rice: (adjustment[0] && adjustment[0].rice) || 0,
-      ramen: (adjustment[0] && adjustment[0].ramen) || 0,
-      water: (adjustment[0] && adjustment[0].water) || 0,
-      shelter: (adjustment[0] && adjustment[0].shelter) || 0,
-      egg: (adjustment[0] && adjustment[0].egg) || 0,
-      soap: (adjustment[0] && adjustment[0].soap) || 0,
-      milk: (adjustment[0] && adjustment[0].milk) || 0,
-      vegetable: (adjustment[0] && adjustment[0].vegetable) || 0,
-      mask: (adjustment[0] && adjustment[0].mask) || 0,
-=======
   await Request.findByIdAndUpdate(
     to,
     {
@@ -110,7 +97,6 @@ deliverSchema.statics.calculateDeliver = async function (to) {
         },
         { name: "mask", value: (adjustment[0] && adjustment[0].mask) || 0 },
       ],
->>>>>>> 057f382e3bdb46d2461ac29037820a7a7b04f785
     },
     { new: true }
   );
@@ -118,11 +104,7 @@ deliverSchema.statics.calculateDeliver = async function (to) {
 
 deliverSchema.post("save", async function () {
   // this point to current review
-<<<<<<< HEAD
-  await this.constructor.calculateDonation(this.to);
-=======
   await this.constructor.calculateDeliver(this.to);
->>>>>>> 057f382e3bdb46d2461ac29037820a7a7b04f785
 });
 
 deliverSchema.pre(/^findOneAnd/, async function (next) {
@@ -131,11 +113,7 @@ deliverSchema.pre(/^findOneAnd/, async function (next) {
 });
 
 deliverSchema.post(/^findOneAnd/, async function (next) {
-<<<<<<< HEAD
-  await this.doc.constructor.calculateDonation(this.doc.to);
-=======
   await this.doc.constructor.calculateDeliver(this.doc.to);
->>>>>>> 057f382e3bdb46d2461ac29037820a7a7b04f785
 });
 
 const Deliver = mongoose.model("Deliver", deliverSchema);

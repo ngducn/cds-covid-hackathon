@@ -71,10 +71,12 @@ donateController.createDonate = catchAsync(async (req, res, next) => {
 
 donationController.confirmDonate = catchAsync(async (req, res, next) => {
   const { to, item, description } = req.body;
+
   let store = await Store.findById(to);
   if (!store) return next(new AppError(300, "No store", "Donate Error"));
   const giver = "61101b8c2d480951e438b2de";
   const donation = await Donation.create({
+    type: "actual",
     from: giver,
     to,
     item,
