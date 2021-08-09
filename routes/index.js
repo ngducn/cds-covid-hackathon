@@ -10,9 +10,9 @@ router.get("/", function (req, res, next) {
 const requestApi = require("./request.api");
 router.use("/request", requestApi);
 
-// /* Transaction routes */
-// const transactionRoute = require("./transaction.api");
-// router.use("/transaction", transactionRoute);
+/* Transaction routes */
+const deliverRoute = require("./deliver.api");
+router.use("/deliver", deliverRoute);
 
 /* Store route */
 // const storeApi = require("./store.api");
