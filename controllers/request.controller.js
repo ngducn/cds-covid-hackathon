@@ -2,20 +2,20 @@ const utilHelpers = require("../helpers/util.helper");
 const { catchAsync } = require("../helpers/util.helper");
 const Request = require("../models/Request");
 const Store = require("../models/Store");
-const User = require("../models/User");
+
 const requestController = {};
 
 requestController.getRequests = catchAsync(async (req, res, next) => {
-  const { page, limit, sortBy, ...filter } = { ...req.query };
+  let { page, limit, sortBy, ...filter } = { ...req.query };
   page = parseInt(page) || 1;
   limit = parseInt(limit) || 10;
 
-  const allRequests = await Request.countDocuments({
+  let allRequests = await Request.countDocuments({
     ...filter,
   });
 
-  const totalPages = Math.ceil(allRequests / limit);
-  const offset = limit * (page - 1);
+  let totalPages = Math.ceil(allRequests / limit);
+  let offset = limit * (page - 1);
 
   let requests = await Request.find(filter)
     .sort({ ...sortBy, createdAt: -1 })
@@ -34,7 +34,7 @@ requestController.getRequests = catchAsync(async (req, res, next) => {
 });
 
 requestController.createNewRequest = catchAsync(async (req, res, next) => {
-  const requestList = await Request.create({ ...req.body });
+  const requestList = await Request.create({ ...req.body, from: req.userId });
   // get current of store
   const store = await Store.findById(req.body.to);
 
@@ -80,7 +80,7 @@ requestController.createNewRequest = catchAsync(async (req, res, next) => {
     res,
     200,
     true,
-    { requestList },
+    { requestList, store },
     null,
     "POST request success."
   );

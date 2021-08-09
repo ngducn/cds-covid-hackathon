@@ -1,5 +1,9 @@
 const express = require("express");
 const donateController = require("../controllers/donate.controller");
+const {
+  loginRequired,
+  adminRequired,
+} = require("../middlewares/auth.middleware");
 const router = express.Router();
 
 /**
@@ -21,12 +25,17 @@ const router = express.Router();
  * @description Create a new donate
  * @access Pulbic
  */
-router.post("/", donateController.createDonate);
+router.post("/create", donateController.createDonate);
 
 /**
- * @route PUT api/donates/:id
+ * @route Post api/donates/:id
  * @description Update a donate information
  * @access Admin required
  */
-
+router.post(
+  "/confirm",
+  loginRequired,
+  adminRequired,
+  donateController.confirmDonate
+);
 module.exports = router;

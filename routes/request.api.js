@@ -1,5 +1,9 @@
 const express = require("express");
 const requestController = require("../controllers/request.controller");
+const {
+  loginRequired,
+  adminRequired,
+} = require("../middlewares/auth.middleware");
 
 const router = express.Router();
 
@@ -19,7 +23,7 @@ router.get("/", requestController.getRequests);
  * @Description : Create a request
  */
 
-router.post("/", requestController.createNewRequest);
+router.post("/", loginRequired, requestController.createNewRequest);
 
 /**
  * @Path : localhost:5000/request
@@ -28,6 +32,11 @@ router.post("/", requestController.createNewRequest);
  * @Description : Update the request status
  */
 
-router.put("/:id", requestController.updateRequestStatus);
+router.put(
+  "/:id",
+  loginRequired,
+  adminRequired,
+  requestController.updateRequestStatus
+);
 
 module.exports = router;

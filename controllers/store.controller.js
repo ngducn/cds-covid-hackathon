@@ -11,9 +11,13 @@ storeController.createStore = catchAsync(async (req, res, next) => {
   //assume admin create store that is not duplicate
   // const admin = req.adminId; final stage
   let { name, address, phone } = req.body;
-  const admin = "61101b8c2d480951e438b2de";
+  let store = await Store.find({ phone });
+  if (store)
+    return next(new AppError(300, "Store exist", "Create Store Error"));
 
-  const store = await Store.create({
+  const admin = req.adminId;
+
+  store = await Store.create({
     name,
     address,
     phone,

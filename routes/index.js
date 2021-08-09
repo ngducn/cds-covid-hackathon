@@ -26,4 +26,8 @@ router.use("/donate", donateApi);
 const userApi = require("./users.api");
 router.use("/users", userApi);
 
+/* Auth route */
+const authApi = require("./auth.api");
+router.use("/auth", authApi);
+
 module.exports = router;

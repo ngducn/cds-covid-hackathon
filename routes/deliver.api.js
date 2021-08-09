@@ -1,5 +1,9 @@
 const express = require("express");
 const deliverController = require("../controllers/deliver.controller");
+const {
+  loginRequired,
+  adminRequired,
+} = require("../middlewares/auth.middleware");
 
 const router = express.Router();
 
@@ -19,6 +23,11 @@ router.get("/", deliverController.getDeliveries);
  * @Description : Create a delivery
  */
 
-router.post("/", deliverController.createNewDelivery);
+router.post(
+  "/",
+  loginRequired,
+  adminRequired,
+  deliverController.createNewDelivery
+);
 
 module.exports = router;
