@@ -26,7 +26,6 @@ const deliverSchema = Schema({
     },
   ],
   description: { type: String, required: true },
-  isDone: { type: String, required: true },
 });
 
 deliverSchema.statics.calculateDeliver = async function (to) {

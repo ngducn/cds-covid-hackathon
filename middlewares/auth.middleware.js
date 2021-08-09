@@ -1,10 +1,11 @@
 const jwt = require("jsonwebtoken");
 const { AppError, catchAsync } = require("../helpers/util.helper");
 const JWT_SECRET_KEY = process.env.JWT_SECRET_KEY;
+const User = require("../models/User");
 
 const authMiddleware = {};
 
-authMiddleware.isAdmin = catchAsync(async (req, res) => {
+authMiddleware.loginRequired = catchAsync(async (req, res, next) => {
   try {
     const tokenString = req.headers.authorization;
     if (!tokenString)
@@ -23,13 +24,19 @@ authMiddleware.isAdmin = catchAsync(async (req, res) => {
       req.userId = payload._id;
     });
 
+    next();
+  } catch (error) {
+    next(error);
+  }
+});
+authMiddleware.adminRequired = catchAsync(async (req, res, next) => {
+  try {
     const user = await User.findById(req.userId);
+
     if (!user.role === "admin") {
       return next(new AppError(401, "Admin required", "Validation Error"));
     }
-
     req.adminId = user._id;
-
     next();
   } catch (error) {
     next(error);

@@ -4,7 +4,11 @@ const {
   getAll,
   getSingleStore,
 } = require("../controllers/store.controller");
-const { isAdmin } = require("../middlewares/auth.middleware");
+const {
+  isAdmin,
+  loginRequired,
+  adminRequired,
+} = require("../middlewares/auth.middleware");
 const router = express.Router();
 
 /**
@@ -14,7 +18,7 @@ const router = express.Router();
  * @description : Create a store
  */
 // router.post("/", isAdmin, createStore); <<< final stage
-router.post("/create", createStore);
+router.post("/", loginRequired, adminRequired, createStore);
 
 /**
  * @method : GET
