@@ -33,22 +33,43 @@ deliverController.getDeliveries = catchAsync(async (req, res, next) => {
 });
 
 deliverController.createNewDelivery = catchAsync(async (req, res, next) => {
-  const deliveryList = await Deliver.create(...req.body);
-  const { requestDeliver } = await Store.findById(req.to);
+  const deliverList = await Deliver.create({ ...req.body });
+  // get current of store
+  const store = await Store.findById(req.body.from);
 
+  const obj = {};
+  deliverList.item.map((el, idx) => (obj[el.name] = idx));
   result = await Store.findByIdAndUpdate(
     store._id,
     {
       requestDeliver: {
-        rice: requestDeliver.rice + (deliveryList.rice || 0),
-        ramen: requestDeliver.ramen + (deliveryList.ramen || 0),
-        milk: requestDeliver.milk + (deliveryList.milk || 0),
-        mask: requestDeliver.mask + (deliveryList.mask || 0),
-        soap: requestDeliver.soap + (requestList.soap || 0),
-        water: requestDeliver.water + (deliveryList.water || 0),
-        egg: requestDeliver.egg + (deliveryList.egg || 0),
-        vegetable: requestDeliver.vegetable + (deliveryList.vegetable || 0),
-        shelter: requestDeliver.shelter + (deliveryList.shelter || 0),
+        rice:
+          store.requestSchedule.rice +
+          (requestList.requestSchedule[obj["rice"]]?.value || 0),
+        ramen:
+          store.requestSchedule.ramen +
+          (requestList.requestSchedule[obj["ramen"]]?.value || 0),
+        milk:
+          store.requestSchedule.milk +
+          (requestList.requestSchedule[obj["milk"]]?.value || 0),
+        mask:
+          store.requestSchedule.mask +
+          (requestList.requestSchedule[obj["mask"]]?.value || 0),
+        soap:
+          store.requestSchedule.soap +
+          (requestList.requestSchedule[obj["soap"]]?.value || 0),
+        water:
+          store.requestSchedule.water +
+          (requestList.requestSchedule[obj["water"]]?.value || 0),
+        egg:
+          store.requestSchedule.egg +
+          (requestList.requestSchedule[obj["egg"]]?.value || 0),
+        vegetable:
+          store.requestSchedule.vegetable +
+          (requestList.requestSchedule[obj["vegetable"]]?.value || 0),
+        shelter:
+          store.requestSchedule.shelter +
+          (requestList.requestSchedule[obj["shelter"]]?.value || 0),
       },
     },
     { new: true }
