@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const deliverSchema = Schema({
   from: { type: Schema.ObjectId, ref: "Store", required: true },
-  targetId: { type: Schema.ObjectId, ref: "Request", required: true },
+  to: { type: Schema.ObjectId, ref: "Request", required: true },
   item: [
     {
       name: {
@@ -28,14 +28,14 @@ const deliverSchema = Schema({
   isDone: { type: String, required: true },
 });
 
-deliverSchema.statics.calculateDonation = async function (targetId) {
+deliverSchema.statics.calculateDonation = async function (to) {
   const adjustment = await this.aggregate([
     {
-      $match: { targetId },
+      $match: { to },
     },
     {
       $group: {
-        _id: "$targetId",
+        _id: "$to",
         rice: {
           $sum: { $cond: [{ $eq: ["$item.name", "rice"] }, "$item.value"] },
         },
@@ -68,7 +68,7 @@ deliverSchema.statics.calculateDonation = async function (targetId) {
       },
     },
   ]);
-  await Request.findByIdAndUpdate(targetId, {
+  await Request.findByIdAndUpdate(to, {
     itemReceive: {
       rice: (adjustment[0] && adjustment[0].rice) || 0,
       ramen: (adjustment[0] && adjustment[0].ramen) || 0,
@@ -85,7 +85,7 @@ deliverSchema.statics.calculateDonation = async function (targetId) {
 
 deliverSchema.post("save", async function () {
   // this point to current review
-  await this.constructor.calculateDonation(this.targetId, this.targetType);
+  await this.constructor.calculateDonation(this.to, this.targetType);
 });
 
 deliverSchema.pre(/^findOneAnd/, async function (next) {
@@ -95,7 +95,7 @@ deliverSchema.pre(/^findOneAnd/, async function (next) {
 
 deliverSchema.post(/^findOneAnd/, async function (next) {
   await this.doc.constructor.calculateDonation(
-    this.doc.targetId,
+    this.doc.to,
     this.doc.targetType
   );
 });

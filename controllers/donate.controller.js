@@ -1,33 +1,72 @@
 const utilHelpers = require("../helpers/util.helper");
-const { catchAsync, AppError } = require("../helpers/util.helper");
-
-const User = require("../models/Request");
+const {
+  catchAsync,
+  AppError,
+  sendResponse,
+} = require("../helpers/util.helper");
+const Donation = require("../models/Donation");
+const Store = require("../models/Store");
 
 const donateController = {};
 
 donateController.createDonate = catchAsync(async (req, res, next) => {
-  req.body.target = "610fbc2b1657ee204464dfdb";
-  req.body.author = "610fbc2b1657ee204464dfda";
+  const { to, item, description } = req.body;
+  let store = await Store.findById(to);
+  if (!store) return next(new AppError(300, "No store", "Donate Error"));
+  const giver = "61101b8c2d480951e438b2de";
+  const donation = await Donation.create({
+    from: giver,
+    to,
+    item,
+    description,
+  });
 
-  const donate = await Request.create({ ...req.body });
+  const objTest = {};
+  donation.item.map((el, idx) => (objTest[el.name] = idx));
+  store = await Store.findByIdAndUpdate(
+    store._id,
+    {
+      donationSchedule: {
+        rice:
+          store.donationSchedule.rice +
+          (donation.item[objTest["rice"]]?.value || 0),
+        ramen:
+          store.donationSchedule.ramen +
+          (donation.item[objTest["ramen"]]?.value || 0),
+        milk:
+          store.donationSchedule.milk +
+          (donation.item[objTest["milk"]]?.value || 0),
+        egg:
+          store.donationSchedule.egg +
+          (donation.item[objTest["egg"]]?.value || 0),
+        water:
+          store.donationSchedule.water +
+          (donation.item[objTest["water"]]?.value || 0),
+        vegetable:
+          store.donationSchedule.vegetable +
+          (donation.item[objTest["vegetable"]]?.value || 0),
+        mask:
+          store.donationSchedule.mask +
+          (donation.item[objTest["mask"]]?.value || 0),
+        soap:
+          store.donationSchedule.soap +
+          (donation.item[objTest["soap"]]?.value || 0),
+        shelter:
+          store.donationSchedule.rice +
+          (donation.item[objTest["shelter"]]?.value || 0),
+      },
+    },
+    { new: true }
+  );
 
-  // const donate = await Store.finded({... req.body})
-  return utilHelpers.sendResponse(
+  return sendResponse(
     res,
     200,
     true,
-    { donate },
+    { store, donation },
     null,
-    "Create donate success"
+    "Create donation success"
   );
-});
-
-donateController.getAllDonate = catchAsync(async (req, res, next) => {
-  const donate = await Request.find();
-});
-
-donateController.getSingleDonate = catchAsync(async (req, res, next) => {
-  const donate = await Request.findById({ _id: req.params.id });
 });
 
 module.exports = donateController;
