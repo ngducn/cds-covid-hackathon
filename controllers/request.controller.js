@@ -1,31 +1,40 @@
 const utilHelpers = require("../helpers/util.helper");
 const { catchAsync } = require("../helpers/util.helper");
-const Request = require("../models/Request");
-const User = require("../models/User");
+const Transaction = require("../models/Transaction");
 const requestController = {};
 
 requestController.getRequests = catchAsync(async (req, res, next) => {
-  const { page, limit, ...filter } = req.query;
-  const request_limit = limit ? limit : 10;
-  const request_page = page ? request_limit * page : 0;
+  const { page, limit, sortBy, ...filter } = { ...req.query };
+  page = parseInt(page) || 1;
+  limit = parseInt(limit) || 10;
 
-  let requests = await Request.find(filter)
-    .populate("author")
-    .limit(request_limit)
-    .skip(request_page);
+  const allRequests = await Transaction.countDocuments({
+    ...filter,
+  });
+
+  const totalPages = Math.ceil(allRequests / limit);
+  const offset = limit * (page - 1);
+
+  let requests = await Transaction.find(filter)
+    .sort({ ...sortBy, createdAt: -1 })
+    .skip(offset)
+    .limit(limit)
+    .populate("author");
 
   return utilHelpers.sendResponse(
     res,
     200,
     true,
-    { requests },
+    { requests, totalPages },
     null,
     "GET requests success."
   );
 });
 
 requestController.createNewRequest = catchAsync(async (req, res, next) => {
-  const request = await Request.create(...req.body);
+  const content = { ...req.body };
+
+  const request = await Transaction.create(content);
   return utilHelpers.sendResponse(
     res,
     200,
@@ -37,12 +46,19 @@ requestController.createNewRequest = catchAsync(async (req, res, next) => {
 });
 
 requestController.updateRequestStatus = catchAsync(async (req, res, next) => {
-  let { status } = req.body;
+  const { isDone } = req.body;
+
+  const request = await Transaction.findByIdAndUpdate(
+    req.params.id,
+    { isDone: isDone },
+    { new: true },
+  );
+
   return utilHelpers.sendResponse(
     res,
     200,
     true,
-    {},
+    { request },
     null,
     "PUT request status success."
   );

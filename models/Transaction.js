@@ -90,19 +90,20 @@ transactionSchema.statics.calculateTotal = async function (targetId) {
   });
 };
 
-transactionSchema.post("save", async function () {
-  // this point to current review
-  await this.constructor.calculateTransaction(this.targetId);
-});
+// transactionSchema.post("save", async function () {
+//   // this point to current review
+//   await this.constructor.calculateTotal(this.targetId);
+// });
 
-transactionSchema.pre(/^findOneAnd/, async function (next) {
-  this.doc = await this.findOne();
-  next();
-});
+// transactionSchema.pre(/^findOneAnd/, async function (next) {
+//   this.doc = await this.findOne();
+//   next();
+// });
 
-transactionSchema.post(/^findOneAnd/, async function (next) {
-  await this.doc.constructor.calculateTransaction(this.doc.targetId);
-});
+// transactionSchema.post(/^findOneAnd/, async function (next) {
+//   await this.doc.constructor.calculateTotal(this.doc.targetId);
+// });
 
 const Transaction = mongoose.model("Transaction", transactionSchema);
+
 module.exports = Transaction;
