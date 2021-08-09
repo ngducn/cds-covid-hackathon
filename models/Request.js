@@ -2,8 +2,8 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const requestSchema = Schema({
-  from: { type: Schema.ObjectId, ref: "User", required: true },
-  to: { type: Schema.ObjectId, ref: "Store", required: true },
+  from: { type: Schema.ObjectId, ref: "User" },
+  to: { type: Schema.ObjectId, ref: "Store" },
   requestSchedule: [
     {
       name: {
@@ -21,7 +21,7 @@ const requestSchema = Schema({
           "shelter",
         ],
       },
-      value: { type: Number },
+      value: { type: Number, default: 0 },
     },
   ],
   requestReceive: [
@@ -44,8 +44,8 @@ const requestSchema = Schema({
       value: { type: Number },
     },
   ],
-  description: { type: String, required: true },
-  isDone: { type: String, required: true },
+  description: { type: String },
+  isDone: { type: String },
 });
 
 const Request = mongoose.model("Request", requestSchema);

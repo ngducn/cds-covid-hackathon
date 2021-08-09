@@ -1,4 +1,4 @@
-const utilsHelper = require("../helpers/util.helper");
+const utilHelpers = require("../helpers/util.helper");
 const User = require("../models/User");
 
 const userController = {};
@@ -15,7 +15,7 @@ userController.createUser = async (req, res, next) => {
       phone,
       status,
     });
-    return utilsHelper.sendResponse(
+    return utilHelpers.sendResponse(
       res,
       200,
       true,

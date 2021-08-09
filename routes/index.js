@@ -6,9 +6,13 @@ router.get("/", function (req, res, next) {
   res.render("index", { title: "Express" });
 });
 
+/* Request routes */
+const requestApi = require("./request.api");
+router.use("/request", requestApi);
+
 /* Transaction routes */
-// const transactionRoute = require("./transaction.api");
-// router.use("/transaction", transactionRoute);
+const deliverRoute = require("./deliver.api");
+router.use("/deliver", deliverRoute);
 
 /* Store route */
 const storeApi = require("./store.api");
