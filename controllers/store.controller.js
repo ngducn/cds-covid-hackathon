@@ -11,7 +11,7 @@ storeController.createStore = catchAsync(async (req, res, next) => {
   //assume admin create store that is not duplicate
   // const admin = req.adminId; final stage
   let { name, address, phone } = req.body;
-  const admin = "ObjectId";
+  const admin = "61101b8c2d480951e438b2de";
 
   const store = await Store.create({
     name,
@@ -20,15 +20,7 @@ storeController.createStore = catchAsync(async (req, res, next) => {
     admin,
   });
 
-  const accessToken = store.generateToken();
-  sendResponse(
-    res,
-    200,
-    true,
-    { store, accessToken },
-    null,
-    "create store success"
-  );
+  sendResponse(res, 200, true, { store }, null, "create store success");
 });
 
 storeController.getAll = catchAsync(async (req, res, next) => {
@@ -60,7 +52,11 @@ storeController.getAll = catchAsync(async (req, res, next) => {
 });
 
 storeController.getSingleStore = catchAsync(async (req, res, next) => {
+  if (!req.params.id)
+    return next(new (AppError(300, "no id", "Store Error"))());
   let store = await Store.findById(req.params.id);
+
+  return sendResponse(res, 200, true, { store }, null, "Get all store success");
 });
 
 module.exports = storeController;

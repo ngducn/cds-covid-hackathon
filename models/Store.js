@@ -6,7 +6,7 @@ const storeSchema = Schema(
   {
     name: { type: String, required: true },
     admin: { type: Schema.ObjectId, required: true, ref: "User" },
-    phone: { type: String, required: true, unique: true },
+    phone: { type: String, required: true },
     address: {
       number: { type: String, required: true },
       streetName: { type: String, required: true },
