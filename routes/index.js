@@ -15,8 +15,8 @@ const deliverRoute = require("./deliver.api");
 router.use("/deliver", deliverRoute);
 
 /* Store route */
-// const storeApi = require("./store.api");
-// router.use("/store", storeApi);
+const storeApi = require("./store.api");
+router.use("/store", storeApi);
 
 /* Donate route */
 // const donateApi = require("./donate.api");
