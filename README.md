@@ -34,3 +34,10 @@ This code was reviewed by @username and @otherusername.
 - [ ] User story:
 - [ ] User story:
 - [ ] User story:
+
+ngta di giao hang
+
+1. request het request
+2. click vao tung request
+3. -> nhan nut deliver -> tao deliver
+4. update requestDeliver trong store
