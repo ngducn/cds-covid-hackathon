@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const Request = require("./Request");
 const Schema = mongoose.Schema;
 
 const deliverSchema = Schema({
@@ -37,39 +38,42 @@ deliverSchema.statics.calculateDonation = async function (to) {
       $group: {
         _id: "$to",
         rice: {
-          $sum: { $cond: [{ $eq: ["$item.name", "rice"] }, "$item.value"] },
+          $sum: { $cond: [{ $eq: ["$item.name", "rice"] }, $item.value, 0] },
         },
         ramen: {
-          $sum: { $cond: [{ $eq: ["$item.name", "ramen"] }, "$item.value"] },
+          $sum: { $cond: [{ $eq: ["$item.name", "ramen"] }, "$item.value", 0] },
         },
         egg: {
-          $sum: { $cond: [{ $eq: ["$item.name", "egg"] }, "$item.value"] },
+          $sum: { $cond: [{ $eq: ["$item.name", "egg"] }, "$item.value", 0] },
         },
         water: {
-          $sum: { $cond: [{ $eq: ["$item.name", "water"] }, "$item.value"] },
+          $sum: { $cond: [{ $eq: ["$item.name", "water"] }, "$item.value", 0] },
         },
         milk: {
-          $sum: { $cond: [{ $eq: ["$item.name", "milk"] }, "$item.value"] },
+          $sum: { $cond: [{ $eq: ["$item.name", "milk"] }, "$item.value", 0] },
         },
         vegetable: {
           $sum: {
-            $cond: [{ $eq: ["$item.name", "vegetable"] }, "$item.value"],
+            $cond: [{ $eq: ["$item.name", "vegetable"] }, "$item.value", 0],
           },
         },
         mask: {
-          $sum: { $cond: [{ $eq: ["$item.name", "mask"] }, "$item.value"] },
+          $sum: { $cond: [{ $eq: ["$item.name", "mask"] }, "$item.value", 0] },
         },
         soap: {
-          $sum: { $cond: [{ $eq: ["$item.name", "soap"] }, "$item.value"] },
+          $sum: { $cond: [{ $eq: ["$item.name", "soap"] }, "$item.value", 0] },
         },
         shelter: {
-          $sum: { $cond: [{ $eq: ["$item.name", "shelter"] }, "$item.value"] },
+          $sum: {
+            $cond: [{ $eq: ["$item.name", "shelter"] }, "$item.value", 0],
+          },
         },
       },
     },
   ]);
+  console.log(adjustment);
   await Request.findByIdAndUpdate(to, {
-    itemReceive: {
+    requestReceive: {
       rice: (adjustment[0] && adjustment[0].rice) || 0,
       ramen: (adjustment[0] && adjustment[0].ramen) || 0,
       water: (adjustment[0] && adjustment[0].water) || 0,

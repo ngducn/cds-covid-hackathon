@@ -45,31 +45,31 @@ deliverController.createNewDelivery = catchAsync(async (req, res, next) => {
       requestDeliver: {
         rice:
           store.requestSchedule.rice +
-          (requestList.requestSchedule[obj["rice"]]?.value || 0),
+          (deliverList.item[obj["rice"]]?.value || 0),
         ramen:
           store.requestSchedule.ramen +
-          (requestList.requestSchedule[obj["ramen"]]?.value || 0),
+          (deliverList.item[obj["ramen"]]?.value || 0),
         milk:
           store.requestSchedule.milk +
-          (requestList.requestSchedule[obj["milk"]]?.value || 0),
+          (deliverList.item[obj["milk"]]?.value || 0),
         mask:
           store.requestSchedule.mask +
-          (requestList.requestSchedule[obj["mask"]]?.value || 0),
+          (deliverList.item[obj["mask"]]?.value || 0),
         soap:
           store.requestSchedule.soap +
-          (requestList.requestSchedule[obj["soap"]]?.value || 0),
+          (deliverList.item[obj["soap"]]?.value || 0),
         water:
           store.requestSchedule.water +
-          (requestList.requestSchedule[obj["water"]]?.value || 0),
+          (deliverList.item[obj["water"]]?.value || 0),
         egg:
           store.requestSchedule.egg +
-          (requestList.requestSchedule[obj["egg"]]?.value || 0),
+          (deliverList.item[obj["egg"]]?.value || 0),
         vegetable:
           store.requestSchedule.vegetable +
-          (requestList.requestSchedule[obj["vegetable"]]?.value || 0),
+          (deliverList.item[obj["vegetable"]]?.value || 0),
         shelter:
           store.requestSchedule.shelter +
-          (requestList.requestSchedule[obj["shelter"]]?.value || 0),
+          (deliverList.item[obj["shelter"]]?.value || 0),
       },
     },
     { new: true }
@@ -79,7 +79,7 @@ deliverController.createNewDelivery = catchAsync(async (req, res, next) => {
     res,
     200,
     true,
-    { deliveryList },
+    { deliverList },
     null,
     "POST new delivery success."
   );
