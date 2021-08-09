@@ -19,8 +19,8 @@ const storeApi = require("./store.api");
 router.use("/store", storeApi);
 
 /* Donate route */
-// const donateApi = require("./donate.api");
-// router.use("/donate", donateApi);
+const donateApi = require("./donate.api");
+router.use("/donate", donateApi);
 
 /* User route */
 const userApi = require("./users.api");

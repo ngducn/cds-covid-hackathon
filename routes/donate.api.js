@@ -7,14 +7,14 @@ const router = express.Router();
  * @description Get all donates
  * @access Public
  */
-router.get("/", donateController.getAllDonate);
+// router.get("/", donateController.getAllDonate);
 
 /**
  * @route GET localhost:5000/charity/donate/:id
  * @description Get a single donate
  * @access Public
  */
-router.get("/donateId", donateController.getSingleDonate);
+// router.get("/donateId", donateController.getSingleDonate);
 
 /**
  * @route POST localhost:5000/charity/donate

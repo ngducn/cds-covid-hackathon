@@ -34,24 +34,43 @@ requestController.getRequests = catchAsync(async (req, res, next) => {
 });
 
 requestController.createNewRequest = catchAsync(async (req, res, next) => {
-  const requestList = await Request.create(...req.body);
+  const requestList = await Request.create({ ...req.body });
+  // get current of store
+  const store = await Store.findById(req.body.to);
 
-  //get current of store
-  const { request } = await Store.findById(req.to);
-  //update result
+  const obj = {};
+  requestList.requestSchedule.map((el, idx) => (obj[el.name] = idx));
   result = await Store.findByIdAndUpdate(
     store._id,
     {
-      request: {
-        rice: request.rice + (requestList.rice || 0),
-        ramen: request.ramen + (requestList.ramen || 0),
-        milk: request.milk + (requestList.milk || 0),
-        mask: request.mask + (requestList.mask || 0),
-        soap: request.soap + (requestList.soap || 0),
-        water: request.water + (requestList.water || 0),
-        egg: request.egg + (requestList.egg || 0),
-        vegetable: request.vegetable + (requestList.vegetable || 0),
-        shelter: request.shelter + (requestList.shelter || 0),
+      requestSchedule: {
+        rice:
+          store.requestSchedule.rice +
+          (requestList.requestSchedule[obj["rice"]]?.value || 0),
+        ramen:
+          store.requestSchedule.ramen +
+          (requestList.requestSchedule[obj["ramen"]]?.value || 0),
+        milk:
+          store.requestSchedule.milk +
+          (requestList.requestSchedule[obj["milk"]]?.value || 0),
+        mask:
+          store.requestSchedule.mask +
+          (requestList.requestSchedule[obj["mask"]]?.value || 0),
+        soap:
+          store.requestSchedule.soap +
+          (requestList.requestSchedule[obj["soap"]]?.value || 0),
+        water:
+          store.requestSchedule.water +
+          (requestList.requestSchedule[obj["water"]]?.value || 0),
+        egg:
+          store.requestSchedule.egg +
+          (requestList.requestSchedule[obj["egg"]]?.value || 0),
+        vegetable:
+          store.requestSchedule.vegetable +
+          (requestList.requestSchedule[obj["vegetable"]]?.value || 0),
+        shelter:
+          store.requestSchedule.shelter +
+          (requestList.requestSchedule[obj["shelter"]]?.value || 0),
       },
     },
     { new: true }
@@ -61,7 +80,7 @@ requestController.createNewRequest = catchAsync(async (req, res, next) => {
     res,
     200,
     true,
-    { request },
+    { requestList },
     null,
     "POST request success."
   );

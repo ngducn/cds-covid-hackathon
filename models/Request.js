@@ -21,7 +21,7 @@ const requestSchema = Schema({
           "shelter",
         ],
       },
-      value: { type: Number },
+      value: { type: Number, default: 0 },
     },
   ],
   requestReceive: [
