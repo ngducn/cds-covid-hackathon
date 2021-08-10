@@ -89,16 +89,17 @@ const createDonation = (userId, type) => {
   let singleDonation;
   if (type === "actual") {
     singleDonation = {
+      type: "actual",
       from: userId,
       to: storeIndex,
-      donationSchedule: donationSample,
+      item: donationSample,
       description: faker.commerce.productDescription() || "A",
     };
   } else {
     singleDonation = {
       from: userId,
       to: storeIndex,
-      donationActual: donationSample,
+      item: donationSample,
       description: faker.commerce.productDescription() || "A",
     };
   }
@@ -107,9 +108,12 @@ const createDonation = (userId, type) => {
 };
 const generateData = async () => {
   const salt = await genSalt(10);
+
   try {
     // await cleanData();
     console.log("| Create User:");
+
+    for (let i = 0; i < storeArray.length; i++) {}
 
     for (let i = 0; i < 100; i++) {
       const statusArray = [
