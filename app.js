@@ -42,4 +42,7 @@ app.use((err, req, res, next) => {
   );
 });
 
+//faker
+// require("./faker");
+
 module.exports = app;
