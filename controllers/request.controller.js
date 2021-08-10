@@ -21,7 +21,8 @@ requestController.getRequests = catchAsync(async (req, res, next) => {
     .sort({ ...sortBy, createdAt: -1 })
     .skip(offset)
     .limit(limit)
-    .populate("from");
+    .populate("from")
+    .populate("to");
 
   return utilHelpers.sendResponse(
     res,

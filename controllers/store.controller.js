@@ -57,10 +57,10 @@ storeController.getAll = catchAsync(async (req, res, next) => {
 });
 
 storeController.getSingleStore = catchAsync(async (req, res, next) => {
-  if (!req.params.id)
-    return next(new (AppError(300, "no id", "Store Error"))());
+  console.log(req.params.id);
+  if (!req.params.id) return next(new AppError(300, "no id", "Store Error"));
   let store = await Store.findById(req.params.id);
-
+  if (!store) return next(new AppError(300, "store not found", "Store Error"));
   return sendResponse(res, 200, true, { store }, null, "Get all store success");
 });
 
