@@ -18,6 +18,15 @@ router.get("/", requestController.getRequests);
 
 /**
  * @Path : localhost:5000/charity/request
+ * @Method : GET
+ * @Access : public
+ * @Description : Get single request detail
+ */
+
+router.get("/:id", requestController.getSingleRequest);
+
+/**
+ * @Path : localhost:5000/charity/request
  * @Method : POST
  * @Access : public
  * @Description : Create a request
