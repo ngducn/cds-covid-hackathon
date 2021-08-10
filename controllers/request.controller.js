@@ -33,6 +33,22 @@ requestController.getRequests = catchAsync(async (req, res, next) => {
   );
 });
 
+requestController.getSingleRequest = catchAsync(async (req, res, next) => {
+  const { id } = req.params;
+  const request = await Request.findById(id);
+  if (!request)
+    return next(new AppError(400, "User not found", "Get Current User Error"));
+
+  return utilHelpers.sendResponse(
+    res,
+    200,
+    true,
+    { request },
+    null,
+    "GET requests success."
+  );
+});
+
 requestController.createNewRequest = catchAsync(async (req, res, next) => {
   const requestList = await Request.create({ ...req.body, from: req.userId });
   // get current of store
