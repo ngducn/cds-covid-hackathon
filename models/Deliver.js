@@ -2,31 +2,34 @@ const mongoose = require("mongoose");
 const Request = require("./Request");
 const Schema = mongoose.Schema;
 
-const deliverSchema = Schema({
-  from: { type: Schema.ObjectId, ref: "Store", required: true },
-  to: { type: Schema.ObjectId, ref: "Request", required: true },
-  item: [
-    {
-      name: {
-        type: String,
-        required: true,
-        enum: [
-          "rice",
-          "ramen",
-          "milk",
-          "egg",
-          "water",
-          "vegetable",
-          "mask",
-          "soap",
-          "shelter",
-        ],
+const deliverSchema = Schema(
+  {
+    from: { type: Schema.ObjectId, ref: "Store", required: true },
+    to: { type: Schema.ObjectId, ref: "Request", required: true },
+    item: [
+      {
+        name: {
+          type: String,
+          required: true,
+          enum: [
+            "rice",
+            "ramen",
+            "milk",
+            "egg",
+            "water",
+            "vegetable",
+            "mask",
+            "soap",
+            "shelter",
+          ],
+        },
+        value: { type: Number, required: true },
       },
-      value: { type: Number, required: true },
-    },
-  ],
-  description: { type: String, required: true },
-});
+    ],
+    description: { type: String, required: true },
+  },
+  { timestamp: true }
+);
 
 deliverSchema.statics.calculateDeliver = async function (to) {
   const adjustment = await this.aggregate([

@@ -10,6 +10,7 @@ async function connect() {
       useCreateIndex: true,
     });
     console.log("Connect success.");
+    // require("../faker");
   } catch (error) {
     console.log("Connect failed.", error);
   }

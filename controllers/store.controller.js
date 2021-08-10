@@ -11,7 +11,7 @@ storeController.createStore = catchAsync(async (req, res, next) => {
   //assume admin create store that is not duplicate
   // const admin = req.adminId; final stage
   let { name, address, phone } = req.body;
-  let store = await Store.find({ phone });
+  let store = await Store.findOne({ phone });
   if (store)
     return next(new AppError(300, "Store exist", "Create Store Error"));
 
@@ -44,7 +44,8 @@ storeController.getAll = catchAsync(async (req, res, next) => {
     .skip(offset)
     .limit(limit)
     .populate("admin");
-
+  const ids = store.map((el) => el._id);
+  console.log("store id", ids);
   return sendResponse(
     res,
     200,

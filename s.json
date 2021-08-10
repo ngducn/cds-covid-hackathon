@@ -1,0 +1,520 @@
+{
+  "success": true,
+  "data": {
+    "store": [
+      {
+        "address": {
+          "number": "123a/4",
+          "streetName": "ton dan",
+          "ward": "23",
+          "city": "hcm",
+          "district": "4"
+        },
+        "requestSchedule": {
+          "rice": 0,
+          "ramen": 0,
+          "egg": 0,
+          "water": 0,
+          "milk": 0,
+          "vegetable": 0,
+          "mask": 0,
+          "soap": 0,
+          "shelter": 0
+        },
+        "donationSchedule": {
+          "rice": 0,
+          "ramen": 0,
+          "egg": 0,
+          "water": 0,
+          "milk": 0,
+          "vegetable": 0,
+          "mask": 0,
+          "soap": 0,
+          "shelter": 0
+        },
+        "requestDeliver": {
+          "rice": 0,
+          "ramen": 0,
+          "egg": 0,
+          "water": 0,
+          "milk": 0,
+          "vegetable": 0,
+          "mask": 0,
+          "soap": 0,
+          "shelter": 0
+        },
+        "donationActual": {
+          "rice": 0,
+          "ramen": 0,
+          "egg": 0,
+          "water": 0,
+          "milk": 0,
+          "vegetable": 0,
+          "mask": 0,
+          "soap": 0,
+          "shelter": 0
+        },
+        "_id": "61121bc67ea3f14518dcff67",
+        "name": "New Store",
+        "phone": "12322221523",
+        "admin": {
+          "address": {
+            "number": "123a/4",
+            "streetName": "ton dan",
+            "ward": "23",
+            "city": "hcm",
+            "district": "4"
+          },
+          "status": ["covid", "old", "accident"],
+          "role": "admin",
+          "_id": "611219e6c79d7c00150def95",
+          "name": "Admin",
+          "phone": "12",
+          "password": "$2b$10$8oF3nd6/dtjvXK79IOUkR.qfCvWwhYN36XfwsyZnnw.mux.3WZDBK",
+          "__v": 0
+        },
+        "__v": 0
+      },
+      {
+        "address": {
+          "number": "123a/4",
+          "streetName": "ton dan",
+          "ward": "23",
+          "city": "hcm",
+          "district": "5"
+        },
+        "requestSchedule": {
+          "rice": 0,
+          "ramen": 0,
+          "egg": 0,
+          "water": 0,
+          "milk": 0,
+          "vegetable": 0,
+          "mask": 0,
+          "soap": 0,
+          "shelter": 0
+        },
+        "donationSchedule": {
+          "rice": 0,
+          "ramen": 0,
+          "egg": 0,
+          "water": 0,
+          "milk": 0,
+          "vegetable": 0,
+          "mask": 0,
+          "soap": 0,
+          "shelter": 0
+        },
+        "requestDeliver": {
+          "rice": 0,
+          "ramen": 0,
+          "egg": 0,
+          "water": 0,
+          "milk": 0,
+          "vegetable": 0,
+          "mask": 0,
+          "soap": 0,
+          "shelter": 0
+        },
+        "donationActual": {
+          "rice": 0,
+          "ramen": 0,
+          "egg": 0,
+          "water": 0,
+          "milk": 0,
+          "vegetable": 0,
+          "mask": 0,
+          "soap": 0,
+          "shelter": 0
+        },
+        "_id": "61121c2c7ea3f14518dcff6b",
+        "name": "HTX DANHAR",
+        "phone": "1",
+        "admin": {
+          "address": {
+            "number": "123a/4",
+            "streetName": "ton dan",
+            "ward": "23",
+            "city": "hcm",
+            "district": "4"
+          },
+          "status": ["covid", "old", "accident"],
+          "role": "admin",
+          "_id": "611219e6c79d7c00150def95",
+          "name": "Admin",
+          "phone": "12",
+          "password": "$2b$10$8oF3nd6/dtjvXK79IOUkR.qfCvWwhYN36XfwsyZnnw.mux.3WZDBK",
+          "__v": 0
+        },
+        "__v": 0
+      },
+      {
+        "address": {
+          "number": "123a/4",
+          "streetName": "ton dan",
+          "ward": "23",
+          "city": "hcm",
+          "district": "Tan Phu"
+        },
+        "requestSchedule": {
+          "rice": 0,
+          "ramen": 0,
+          "egg": 0,
+          "water": 0,
+          "milk": 0,
+          "vegetable": 0,
+          "mask": 0,
+          "soap": 0,
+          "shelter": 0
+        },
+        "donationSchedule": {
+          "rice": 0,
+          "ramen": 0,
+          "egg": 0,
+          "water": 0,
+          "milk": 0,
+          "vegetable": 0,
+          "mask": 0,
+          "soap": 0,
+          "shelter": 0
+        },
+        "requestDeliver": {
+          "rice": 0,
+          "ramen": 0,
+          "egg": 0,
+          "water": 0,
+          "milk": 0,
+          "vegetable": 0,
+          "mask": 0,
+          "soap": 0,
+          "shelter": 0
+        },
+        "donationActual": {
+          "rice": 0,
+          "ramen": 0,
+          "egg": 0,
+          "water": 0,
+          "milk": 0,
+          "vegetable": 0,
+          "mask": 0,
+          "soap": 0,
+          "shelter": 0
+        },
+        "_id": "61121c587ea3f14518dcff6f",
+        "name": "Mai Thuy",
+        "phone": "2",
+        "admin": {
+          "address": {
+            "number": "123a/4",
+            "streetName": "ton dan",
+            "ward": "23",
+            "city": "hcm",
+            "district": "4"
+          },
+          "status": ["covid", "old", "accident"],
+          "role": "admin",
+          "_id": "611219e6c79d7c00150def95",
+          "name": "Admin",
+          "phone": "12",
+          "password": "$2b$10$8oF3nd6/dtjvXK79IOUkR.qfCvWwhYN36XfwsyZnnw.mux.3WZDBK",
+          "__v": 0
+        },
+        "__v": 0
+      },
+      {
+        "address": {
+          "number": "123a/4",
+          "streetName": "ton dan",
+          "ward": "23",
+          "city": "hcm",
+          "district": "Tan Binh"
+        },
+        "requestSchedule": {
+          "rice": 0,
+          "ramen": 0,
+          "egg": 0,
+          "water": 0,
+          "milk": 0,
+          "vegetable": 0,
+          "mask": 0,
+          "soap": 0,
+          "shelter": 0
+        },
+        "donationSchedule": {
+          "rice": 0,
+          "ramen": 0,
+          "egg": 0,
+          "water": 0,
+          "milk": 0,
+          "vegetable": 0,
+          "mask": 0,
+          "soap": 0,
+          "shelter": 0
+        },
+        "requestDeliver": {
+          "rice": 0,
+          "ramen": 0,
+          "egg": 0,
+          "water": 0,
+          "milk": 0,
+          "vegetable": 0,
+          "mask": 0,
+          "soap": 0,
+          "shelter": 0
+        },
+        "donationActual": {
+          "rice": 0,
+          "ramen": 0,
+          "egg": 0,
+          "water": 0,
+          "milk": 0,
+          "vegetable": 0,
+          "mask": 0,
+          "soap": 0,
+          "shelter": 0
+        },
+        "_id": "61121c6f7ea3f14518dcff73",
+        "name": "Tan Binh",
+        "phone": "3",
+        "admin": {
+          "address": {
+            "number": "123a/4",
+            "streetName": "ton dan",
+            "ward": "23",
+            "city": "hcm",
+            "district": "4"
+          },
+          "status": ["covid", "old", "accident"],
+          "role": "admin",
+          "_id": "611219e6c79d7c00150def95",
+          "name": "Admin",
+          "phone": "12",
+          "password": "$2b$10$8oF3nd6/dtjvXK79IOUkR.qfCvWwhYN36XfwsyZnnw.mux.3WZDBK",
+          "__v": 0
+        },
+        "__v": 0
+      },
+      {
+        "address": {
+          "number": "123a/4",
+          "streetName": "ton dan",
+          "ward": "23",
+          "city": "hcm",
+          "district": "6"
+        },
+        "requestSchedule": {
+          "rice": 0,
+          "ramen": 0,
+          "egg": 0,
+          "water": 0,
+          "milk": 0,
+          "vegetable": 0,
+          "mask": 0,
+          "soap": 0,
+          "shelter": 0
+        },
+        "donationSchedule": {
+          "rice": 0,
+          "ramen": 0,
+          "egg": 0,
+          "water": 0,
+          "milk": 0,
+          "vegetable": 0,
+          "mask": 0,
+          "soap": 0,
+          "shelter": 0
+        },
+        "requestDeliver": {
+          "rice": 0,
+          "ramen": 0,
+          "egg": 0,
+          "water": 0,
+          "milk": 0,
+          "vegetable": 0,
+          "mask": 0,
+          "soap": 0,
+          "shelter": 0
+        },
+        "donationActual": {
+          "rice": 0,
+          "ramen": 0,
+          "egg": 0,
+          "water": 0,
+          "milk": 0,
+          "vegetable": 0,
+          "mask": 0,
+          "soap": 0,
+          "shelter": 0
+        },
+        "_id": "61121c967ea3f14518dcff77",
+        "name": "Vietcom",
+        "phone": "4",
+        "admin": {
+          "address": {
+            "number": "123a/4",
+            "streetName": "ton dan",
+            "ward": "23",
+            "city": "hcm",
+            "district": "4"
+          },
+          "status": ["covid", "old", "accident"],
+          "role": "admin",
+          "_id": "611219e6c79d7c00150def95",
+          "name": "Admin",
+          "phone": "12",
+          "password": "$2b$10$8oF3nd6/dtjvXK79IOUkR.qfCvWwhYN36XfwsyZnnw.mux.3WZDBK",
+          "__v": 0
+        },
+        "__v": 0
+      },
+      {
+        "address": {
+          "number": "123a/4",
+          "streetName": "ton dan",
+          "ward": "23",
+          "city": "hcm",
+          "district": "1"
+        },
+        "requestSchedule": {
+          "rice": 0,
+          "ramen": 0,
+          "egg": 0,
+          "water": 0,
+          "milk": 0,
+          "vegetable": 0,
+          "mask": 0,
+          "soap": 0,
+          "shelter": 0
+        },
+        "donationSchedule": {
+          "rice": 0,
+          "ramen": 0,
+          "egg": 0,
+          "water": 0,
+          "milk": 0,
+          "vegetable": 0,
+          "mask": 0,
+          "soap": 0,
+          "shelter": 0
+        },
+        "requestDeliver": {
+          "rice": 0,
+          "ramen": 0,
+          "egg": 0,
+          "water": 0,
+          "milk": 0,
+          "vegetable": 0,
+          "mask": 0,
+          "soap": 0,
+          "shelter": 0
+        },
+        "donationActual": {
+          "rice": 0,
+          "ramen": 0,
+          "egg": 0,
+          "water": 0,
+          "milk": 0,
+          "vegetable": 0,
+          "mask": 0,
+          "soap": 0,
+          "shelter": 0
+        },
+        "_id": "61121cba7ea3f14518dcff7b",
+        "name": "Bo Cong An",
+        "phone": "5",
+        "admin": {
+          "address": {
+            "number": "123a/4",
+            "streetName": "ton dan",
+            "ward": "23",
+            "city": "hcm",
+            "district": "4"
+          },
+          "status": ["covid", "old", "accident"],
+          "role": "admin",
+          "_id": "611219e6c79d7c00150def95",
+          "name": "Admin",
+          "phone": "12",
+          "password": "$2b$10$8oF3nd6/dtjvXK79IOUkR.qfCvWwhYN36XfwsyZnnw.mux.3WZDBK",
+          "__v": 0
+        },
+        "__v": 0
+      },
+      {
+        "address": {
+          "number": "123a/4",
+          "streetName": "ton dan",
+          "ward": "23",
+          "city": "hcm",
+          "district": "10"
+        },
+        "requestSchedule": {
+          "rice": 0,
+          "ramen": 0,
+          "egg": 0,
+          "water": 0,
+          "milk": 0,
+          "vegetable": 0,
+          "mask": 0,
+          "soap": 0,
+          "shelter": 0
+        },
+        "donationSchedule": {
+          "rice": 0,
+          "ramen": 0,
+          "egg": 0,
+          "water": 0,
+          "milk": 0,
+          "vegetable": 0,
+          "mask": 0,
+          "soap": 0,
+          "shelter": 0
+        },
+        "requestDeliver": {
+          "rice": 0,
+          "ramen": 0,
+          "egg": 0,
+          "water": 0,
+          "milk": 0,
+          "vegetable": 0,
+          "mask": 0,
+          "soap": 0,
+          "shelter": 0
+        },
+        "donationActual": {
+          "rice": 0,
+          "ramen": 0,
+          "egg": 0,
+          "water": 0,
+          "milk": 0,
+          "vegetable": 0,
+          "mask": 0,
+          "soap": 0,
+          "shelter": 0
+        },
+        "_id": "61121cd17ea3f14518dcff7f",
+        "name": "Thai Son",
+        "phone": "6",
+        "admin": {
+          "address": {
+            "number": "123a/4",
+            "streetName": "ton dan",
+            "ward": "23",
+            "city": "hcm",
+            "district": "4"
+          },
+          "status": ["covid", "old", "accident"],
+          "role": "admin",
+          "_id": "611219e6c79d7c00150def95",
+          "name": "Admin",
+          "phone": "12",
+          "password": "$2b$10$8oF3nd6/dtjvXK79IOUkR.qfCvWwhYN36XfwsyZnnw.mux.3WZDBK",
+          "__v": 0
+        },
+        "__v": 0
+      }
+    ],
+    "totalPages": 0
+  },
+  "message": "Get all store success"
+}

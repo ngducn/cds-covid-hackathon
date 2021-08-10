@@ -1,43 +1,17 @@
-# cds-covid-hackathon
+# CoderSchool Covid Hackathon
 
 Social-based charity web application built using MERN stack.
 
-Demo:
+## Back End RESTful api
 
-## Video Walkthrough
+## Ruote:
 
-Here's a walkthrough of implemented user stories.
+### User:
 
-<!-- ![](http://g.recordit.co/cURdPMSHT2.gif) -->
+### Auth:
 
-<!-- ## Code Reviews
+### Deliver:
 
-This code was reviewed by @username and @otherusername.
+### Donation:
 
-* [Link to PR #X](#) - reviewed by @username.
-* [Link to PR #Y](#) - reviewed by @otherusername.    -->
-
-## Required User Stories
-
-- [ ] User story: PLEASE HELP DESIGN THIS A TUAN :D
-- [ ] User story:
-- [ ] User story:
-- [ ] User story:
-- [ ] User story:
-- [ ] User story:
-- [ ] User story:
-- [ ] User story:
-
-## Optional User Stories
-
-- [ ] User story:
-- [ ] User story:
-- [ ] User story:
-- [ ] User story:
-
-ngta di giao hang
-
-1. request het request
-2. click vao tung request
-3. -> nhan nut deliver -> tao deliver
-4. update requestDeliver trong store
+### Request:
