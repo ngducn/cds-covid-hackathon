@@ -11,7 +11,7 @@ async function connect() {
     });
     console.log("Connect success.");
   } catch (error) {
-    console.log("Connect failed.");
+    console.log("Connect failed.", error);
   }
 }
 
